@@ -1,0 +1,2 @@
+-- Demo data is created by a server-side fixture, not by production seed execution.
+-- This file intentionally contains no credentials and no live provider identifiers.

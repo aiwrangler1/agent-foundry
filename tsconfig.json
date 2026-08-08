@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/domain" },
+    { "path": "packages/policies" },
+    { "path": "packages/finance" },
+    { "path": "packages/tools" },
+    { "path": "packages/agents" },
+    { "path": "apps/control-plane" }
+  ]
+}

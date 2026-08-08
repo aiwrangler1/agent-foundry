@@ -1,0 +1,8 @@
+{
+  "name": "@agent-foundry/tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": { "@agent-foundry/domain": "workspace:*", "@agent-foundry/finance": "workspace:*", "@agent-foundry/policies": "workspace:*" },
+  "exports": { ".": "./src/index.ts" }
+}

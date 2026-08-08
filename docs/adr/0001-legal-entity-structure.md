@@ -1,48 +1,81 @@
-# ADR 0001: parent corporation with ring-fenced operating subsidiaries
+# ADR 0001: ARTJ LLC as the legal container
 
-Status: proposed for attorney and tax-advisor review
+Status: proposed for New York attorney and tax-advisor review
 
 ## Decision
 
-Use a US parent Delaware C corporation, internally named Agent Foundry, Inc.
-The parent owns the platform IP, control-plane code, shared contracts, and
-central governance. Each material digital business unit should be launched in
-a separately capitalized wholly owned operating subsidiary, initially a
-single-member LLC owned by the parent and taxed according to advice from the
-company's tax advisor. Do not form subsidiaries merely to create paperwork:
-create one when a business unit has material external liability, contracts,
-employees/contractors, regulated activity, distinct financing, or a distinct
-sale/transfer scenario.
+Use ARTJ LLC as the planned New York single-member LLC behind the company’s
+bank account, EIN, taxes, contracts, payment processors, shared intellectual
+property, and early operating activity. Andy is the proposed sole owner.
 
-The parent remains the contracting and governance home for shared platform
-services. Subsidiaries receive services under written intercompany agreements,
-maintain separate books and bank relationships where required, and never share
-credentials, approval authority, or unallocated funds merely because they are
-under common ownership.
+The control plane and repository may continue to use “Agent Foundry” as a
+technical name. It is not the legal entity, a required public master brand, or
+an assumption that every product needs its own company.
 
-## Rationale
+Etsy storefronts may use their own shop names. Standalone websites may use
+their own names or the product name. Individual products do not need a separate
+DBA merely because they have a product title.
 
-The parent C-corp gives a durable share-based ownership and financing structure
-for a company that may raise capital, issue equity, hire, or acquire/sell
-business units. Subsidiary LLCs provide a flexible ring-fence for operating
-risk without forcing every early experiment into a new corporation. This is an
-operating recommendation, not legal or tax advice.
+If ARTJ LLC conducts business under a name other than its legal name, a New
+York Certificate of Assumed Name must be evaluated and filed when required.
+A persistent, meaningful storefront or business name should be treated as a
+DBA candidate; a one-off product label generally should not be treated as a
+separate business by default. Counsel must confirm the application to the
+actual facts.
+
+Approved public disclosure:
+
+> © 2026 ARTJ LLC. This website/shop is owned and operated by ARTJ LLC.
+
+Use that disclosure, or a counsel-approved equivalent, in website footers,
+terms, invoices, and seller disclosures. Do not imply that a product or shop
+name is a separate legal entity.
+
+## Formation defaults
+
+- Jurisdiction: New York, where the business is actually operated.
+- County: Erie County, subject to the actual office location.
+- Legal name: ARTJ LLC, subject to name-availability and trademark review.
+- Ownership: Andy, 100%, subject to final legal documents.
+- Management: member-managed.
+- Federal tax treatment: default single-member LLC classification unless a CPA
+  recommends an election.
+- Outside equity: not currently planned.
+- Subsidiaries: none initially.
+- Registered-agent service: do not purchase one initially without a reason;
+  confirm the New York service-of-process arrangement with counsel.
+
+## Operating-company boundary
+
+Create a separate operating LLC only when a business has a concrete reason,
+such as material contractual or consumer liability, employees or substantial
+contractors, regulated activity, separate financing, significant revenue or
+assets, distinct partners, likely sale or transfer, or platform/payment
+accounts that should be isolated.
+
+Until then, maintain internal books by business unit while keeping the legal
+owner and contracting entity clear: ARTJ LLC.
 
 ## Alternatives rejected for now
 
-- One LLC for everything: simpler, but it mixes platform IP, shared services,
-  and business-unit liabilities.
-- A corporation for every business unit: stronger separation, but unnecessary
-  cost and governance before a unit has material risk or financing needs.
-- S corporation: not selected because ownership, equity, and financing
-  constraints may conflict with the planned parent-company trajectory.
+- Delaware C corporation: adds a second state’s compliance and tax obligations
+  without a current outside-equity plan.
+- Delaware entity plus New York foreign qualification: unnecessary if the
+  company is formed and operated in New York.
+- Corporation for every product or storefront: unnecessary cost and paperwork.
+- Separate DBA for every product: unnecessary unless the name is used as a
+  persistent business or storefront identity.
+- S-corporation election now: defer until a CPA models profit, payroll, and
+  administrative tradeoffs.
 
-## Required human review before formation
+## Required human review before formation or public launch
 
-Counsel and a tax advisor must confirm state of registration/foreign
-qualification, founder equity and IP assignment, tax elections, beneficial
-ownership reporting, employment and contractor structure, insurance, privacy
-and consumer obligations, and the intercompany services/licensing model.
+Counsel and a CPA must confirm the entity name, operating agreement, IP
+assignment, assumed-name requirements, sales-tax classification, New York LLC
+filing-fee obligations, payroll/contractor structure, insurance, privacy and
+consumer obligations, and the use of ARTJ LLC in contracts, invoices, payment
+processors, websites, and marketplaces.
 
-The control plane records this as a proposed legal structure only; it does not
-form an entity or provide legal advice.
+The control plane may research and draft checklists. It does not form ARTJ
+LLC, file a Certificate of Assumed Name, register for tax, sign contracts,
+open accounts, authorize payments, or provide legal or tax advice.

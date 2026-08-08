@@ -4,6 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": { "dev": "next dev", "build": "next build", "start": "next start" },
-  "dependencies": { "@agent-foundry/domain": "workspace:*", "next": "^15.0.0", "react": "^19.0.0", "react-dom": "^19.0.0" },
+  "dependencies": { "@agent-foundry/db": "workspace:*", "@agent-foundry/domain": "workspace:*", "@agent-foundry/feedback": "workspace:*", "@agent-foundry/integrations": "workspace:*", "@agent-foundry/workflows": "workspace:*", "next": "^15.0.0", "react": "^19.0.0", "react-dom": "^19.0.0" },
   "devDependencies": { "@types/react": "^19.0.0", "@types/react-dom": "^19.0.0" }
 }

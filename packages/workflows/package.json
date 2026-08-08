@@ -3,5 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "dependencies": { "@agent-foundry/db": "workspace:*", "@agent-foundry/domain": "workspace:*", "@agent-foundry/integrations": "workspace:*" },
   "exports": { ".": "./src/index.ts" }
 }

@@ -2,10 +2,14 @@
   "files": [],
   "references": [
     { "path": "packages/domain" },
+    { "path": "packages/db" },
     { "path": "packages/policies" },
     { "path": "packages/finance" },
     { "path": "packages/tools" },
     { "path": "packages/agents" },
+    { "path": "packages/feedback" },
+    { "path": "packages/workflows" },
+    { "path": "packages/integrations" },
     { "path": "apps/control-plane" }
   ]
 }

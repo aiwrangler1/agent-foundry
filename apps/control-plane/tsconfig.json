@@ -21,6 +21,18 @@
   "references": [
     {
       "path": "../../packages/domain"
+    },
+    {
+      "path": "../../packages/feedback"
+    },
+    {
+      "path": "../../packages/db"
+    },
+    {
+      "path": "../../packages/integrations"
+    },
+    {
+      "path": "../../packages/workflows"
     }
   ],
   "include": [

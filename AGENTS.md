@@ -1,7 +1,9 @@
-# Agent Foundry repository guidance
+# ARTJ LLC control-plane repository guidance
 
-This repository contains the company control plane. Domain logic must remain
-provider-neutral; provider SDKs belong behind adapters in `packages/integrations`.
+This repository contains ARTJ LLC's company control plane. “Agent Foundry” is
+the technical/repository name, not the legal entity or a required public brand.
+Domain logic must remain provider-neutral; provider SDKs belong behind adapters
+in `packages/integrations`.
 
 Rules:
 

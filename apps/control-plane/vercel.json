@@ -1,0 +1,5 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "cd ../.. && pnpm --filter @agent-foundry/control-plane build",
+  "outputDirectory": ".next"
+}

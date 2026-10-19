@@ -24,3 +24,7 @@ pnpm typecheck
 pnpm test
 pnpm build
 ```
+
+<!-- project-operating-standard:start -->
+Follow [the shared agent operating standard](docs/agent-operating-standard.md). It supplements this project's rules and does not override project-specific instructions.
+<!-- project-operating-standard:end -->

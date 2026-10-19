@@ -6,7 +6,8 @@
   "scripts": {
     "build": "pnpm --filter @agent-foundry/control-plane build",
     "typecheck": "tsc -b",
-    "test": "vitest run",
+    "test": "vitest run && pnpm test:guidance",
+    "test:guidance": "node --test scripts/project-guidance.test.mjs",
     "lint": "eslint ."
   },
   "devDependencies": {

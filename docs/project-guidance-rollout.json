@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "standard": "docs/agent-operating-standard.md",
+  "targets": [
+    {
+      "scope": "This repository",
+      "status": "covered",
+      "verifiedEntryPoints": ["AGENTS.md"],
+      "checkedAbsentEntryPoints": ["CLAUDE.md", "Codex.md", "CODEX.md"],
+      "evidence": [
+        "AGENTS.md links the shared operating standard.",
+        "The project-guidance check verifies the link and marker block."
+      ]
+    },
+    {
+      "scope": "Other repositories",
+      "status": "unknown",
+      "verifiedEntryPoints": [],
+      "nextStep": "Inventory each repository and verify its active agent entry points before updating it. Keep private repository inventories outside this public manifest."
+    },
+    {
+      "scope": "Repositories requiring unavailable local-only access",
+      "status": "blocked",
+      "verifiedEntryPoints": [],
+      "blocker": "Not reachable in this execution environment. No local access was attempted."
+    }
+  ],
+  "downstreamPlan": [
+    "For each discovered repository, inspect existing project instructions and identify the entry points actually used by its agents.",
+    "Copy or adapt the standard and context template without private cross-project content.",
+    "Run the plan command, then explicitly select only verified active entry points for apply.",
+    "Run check, inspect the diff, and update the private rollout inventory with evidence and status."
+  ]
+}

@@ -57,8 +57,8 @@ export function referenceBlock(relativeEntrypoint, standardPath = "docs/agent-op
 }
 
 function inspectEntry(root, relativeEntrypoint, standardPath) {
-  const file = path.resolve(root, relativeEntrypoint);
   const realRoot = canonicalRoot(root);
+  const file = path.resolve(realRoot, relativeEntrypoint);
   const realFile = fs.realpathSync(file);
   if (!isWithin(realRoot, realFile)) throw new Error(`entrypoint_outside_root:${relativeEntrypoint}`);
   if (!ENTRYPOINT_NAMES.has(path.basename(relativeEntrypoint))) throw new Error(`unsupported_entrypoint:${relativeEntrypoint}`);
@@ -82,8 +82,19 @@ function inspectEntry(root, relativeEntrypoint, standardPath) {
 }
 
 function ensureStandard(root, standardPath) {
-  const file = path.resolve(root, standardPath);
-  if (!isWithin(canonicalRoot(root), file) || !fs.existsSync(file) || !fs.statSync(file).isFile()) {
+  const realRoot = canonicalRoot(root);
+  const file = path.resolve(realRoot, standardPath);
+  let realFile;
+  try {
+    realFile = fs.realpathSync(file);
+  } catch (error) {
+    if (error && typeof error === "object" && "code" in error && error.code === "ENOENT") {
+      throw new Error(`standard_not_found:${standardPath}`);
+    }
+    throw error;
+  }
+  if (!isWithin(realRoot, realFile)) throw new Error(`standard_outside_root:${standardPath}`);
+  if (!fs.statSync(realFile).isFile()) {
     throw new Error(`standard_not_found:${standardPath}`);
   }
 }
@@ -109,22 +120,29 @@ export function createPlan(root, standardPath = "docs/agent-operating-standard.m
 export function applyReferences(root, entrypoints, standardPath = "docs/agent-operating-standard.md") {
   ensureStandard(root, standardPath);
   if (entrypoints.length === 0) throw new Error("explicit_entrypoints_required");
-  const results = [];
-  for (const relativeEntrypoint of entrypoints) {
-    const inspected = inspectEntry(root, relativeEntrypoint, standardPath);
-    if (inspected.state === "linked") {
-      results.push({ path: inspected.path, result: "already-linked" });
-      continue;
-    }
-    if (inspected.state !== "missing") throw new Error(`manual_review_required:${relativeEntrypoint}:${inspected.state}`);
+  const selected = [...new Set(entrypoints)];
+  const preflight = selected.map((entrypoint) => inspectEntry(root, entrypoint, standardPath));
+  const invalid = preflight.find(({ state }) => !["linked", "missing"].includes(state));
+  if (invalid) throw new Error(`manual_review_required:${invalid.path}:${invalid.state}`);
 
-    const file = path.resolve(root, relativeEntrypoint);
-    const original = fs.readFileSync(file, "utf8");
+  const realRoot = canonicalRoot(root);
+  const pendingWrites = preflight
+    .filter(({ state }) => state === "missing")
+    .map(({ path: entrypoint }) => {
+      const file = path.resolve(realRoot, entrypoint);
+      const original = fs.readFileSync(file, "utf8");
+      return { path: entrypoint, file, original };
+    });
+
+  for (const { path: entrypoint, file, original } of pendingWrites) {
     const separator = original.length === 0 || original.endsWith("\n") ? "" : "\n";
-    fs.writeFileSync(file, `${original}${separator}\n${referenceBlock(relativeEntrypoint, standardPath)}\n`);
-    results.push({ path: inspected.path, result: "linked" });
+    fs.writeFileSync(file, `${original}${separator}\n${referenceBlock(entrypoint, standardPath)}\n`);
   }
-  return results;
+
+  return preflight.map(({ path: entrypoint, state }) => ({
+    path: entrypoint,
+    result: state === "linked" ? "already-linked" : "linked"
+  }));
 }
 
 export function checkReferences(root, entrypoints, standardPath = "docs/agent-operating-standard.md") {
